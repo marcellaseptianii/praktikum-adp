@@ -54,7 +54,6 @@ peta_permainan = [ # peta permainan, 0 = dinding, 1 = jalan, 2 = titik yang suda
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ]
 
-#agar fungsi square menggambar persegi berwarna pink pada koordinat x, y
 def square(x, y):
     pena_gambar.up()
     pena_gambar.goto(x, y)
@@ -65,13 +64,11 @@ def square(x, y):
         pena_gambar.left(90)
     pena_gambar.end_fill()
 
-#agar fungsi offset mengubah koordinat titik menjadi indeks peta
 def offset(titik): 
     x = int((floor(titik.x, 20) + 200) / 20)
     y = int((180 - floor(titik.y, 20)) / 20)
     return x, y
 
-#agar fungsi valid untuk memeriksa apakah titik berada pada peta dan tidak berada di dinding
 def valid(titik):
     x, y = offset(titik)
     if peta_permainan[y][x] == 0:
