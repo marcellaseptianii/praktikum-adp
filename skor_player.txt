@@ -1,0 +1,9 @@
+skor : 500
+skor : 350
+skor : 40
+skor : 950
+skor : 740
+skor : 60
+skor : 1600
+skor : 290
+skor : 120
