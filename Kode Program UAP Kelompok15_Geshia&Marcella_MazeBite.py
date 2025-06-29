@@ -31,7 +31,7 @@ skor = 0
 
 set_makanan = set()
 
-peta_permainan = [ # peta permainan, 0 = dinding, 1 = jalan, 2 = titik yang sudah dimakan 
+peta_permainan = [ 
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
     [0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
@@ -128,7 +128,7 @@ def tampilan_peta():
     bgcolor('white')
     pena_gambar.color('pink')
     for y in range(len(peta_permainan)):
-        for x in range(len(peta_permainan[y])):  # <-- diperbaiki di sini
+        for x in range(len(peta_permainan[y])): 
             peta = peta_permainan[y][x]
             pos_x = x * 20 - 200
             pos_y = 180 - y * 20
@@ -139,9 +139,7 @@ def tampilan_peta():
                     set_makanan.add(posisi_makanan)
                     pena_gambar.up()
                     pena_gambar.goto(posisi_makanan)
-                    pena_gambar.dot(3, 'pink')
 
-#agar fungsi menggerakkan player, memeriksa musuh, makanan, dan menang
 def pergerakan():
     global skor
     clear()
@@ -165,11 +163,6 @@ def pergerakan():
     if posisi_makan in set_makanan:
         set_makanan.remove(posisi_makan)
         skor += 10
-        tampilkan_skor()
-        makan_sound = pygame.mixer.Sound(os.path.join(os.path.dirname(__file__), "makan.wav"))
-        makan_sound.play()
-
-    if posisi_makan in set_makanan:
         tampilkan_skor()
         makan_sound = pygame.mixer.Sound(os.path.join(os.path.dirname(__file__), "makan.wav"))
         makan_sound.play()
@@ -215,11 +208,11 @@ def pergerakan():
         goto(posisi_makanan)
         dot(3, 'white')
 
-    update()
+    update() 
     ontimer(pergerakan, 90) 
 
 def ubah_arah_player(x, y):
-    if valid(posisi_player+ vector(x, y)):
+    if valid(posisi_player + vector(x, y)):
         arah_gerakan_player.x = x
         arah_gerakan_player.y = y
 
